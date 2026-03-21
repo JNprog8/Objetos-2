@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anemic Domain Model - Martin Fowler</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+
+        blockquote {
+            background: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .meta {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Anemic Domain Model (Modelo de Dominio Anémico)</h1>
+<div class="meta">
+    <p>Por <strong>Martin Fowler</strong></p>
+</div>
+
+<p>Este es uno de esos <em>anti-patrones</em> que ha existido por bastante tiempo, pero que parece estar teniendo un
+    auge particular en este momento. Estaba charlando con Eric
+    Evans sobre esto, y ambos hemos notado que parecen estar volviéndose más populares. Como grandes promotores
+    de un verdadero <a href="https://martinfowler.com/eaaCatalog/domainModel.html" target="_blank">Domain Model</a>
+    (Modelo de Dominio),
+    esto no es algo bueno.</p>
+
+<h2>El Síntoma Principal</h2>
+<p>El síntoma básico de un <strong>Anemic Domain Model</strong> es que, a primera vista, parece el modelo real. Hay
+    objetos, muchos de ellos nombrados a partir de los sustantivos en el espacio del dominio, y estos objetos están
+    conectados con relaciones sustanciales y estructuras que tienen los verdaderos modelos de dominio.</p>
+
+<p>El problema surge cuando observas el comportamiento y te das cuenta de que <strong>apenas hay comportamiento en estos
+    objetos</strong>, haciéndolos poco más que una bolsa de <em>getters</em> y <em>setters</em>. De hecho, a menudo
+    estos modelos vienen con reglas de diseño que establecen que no se debe incluir ninguna lógica de dominio en los
+    objetos de dominio. En su lugar, hay un conjunto de <strong>objetos de servicio</strong> (<em>Service Objects</em> o
+    <em>Managers</em>) que
+    capturan toda la lógica de dominio, realizan todos los cálculos y actualizan los objetos del modelo con los
+    resultados. Estos servicios se ubican por encima del modelo de dominio y utilizan el modelo de
+    dominio puramente para obtener y setear datos.</p>
+
+<h2>El Horror Arquitectónico</h2>
+<p>El horror fundamental de este anti-patrón es que va totalmente en contra de la idea básica del <strong>Object-Oriented
+    Design</strong> (Diseño Orientado a Objetos);que es combinar datos y procesos en un solo lugar. El <em>Anemic
+    Domain Model</em> es, en realidad, un diseño de estilo procedural, justo el tipo de cosas que los extremistas de
+    objetos como yo (y Eric) hemos estado luchando desde nuestros primeros días en Smalltalk.</p>
+
+<p>Lo que es peor, muchas personas piensan que los objetos anémicos son objetos reales y, por lo tanto, pierden por
+    completo el sentido de lo que trata verdaderamente el diseño orientado a objetos.</p>
+
+<h2>El Costo sin el Beneficio</h2>
+<p>Ahora bien, el purismo orientado a objetos está muy bien, pero me doy cuenta de que necesito argumentos más
+    fundamentales en contra de esto que la simple frase <em>"no es orientado a objetos"</em>.</p>
+
+<p>Creo que Eric captura bien la esencia del problema en su libro sobre <a href="https://domainlanguage.com/"
+                                                                           target="_blank">Domain-Driven Design
+    (DDD)</a>. El problema con el modelo anémico es que incurres en todos los costos de construir un modelo de dominio
+    (como la complejidad del mapeo objeto-relacional), <strong>sin obtener ninguno de los beneficios</strong>. Te quedas
+    con una capa de Aplicación gorda e imperativa, y una capa de Dominio esquelética.</p>
+
+<blockquote>
+    <p>"La capa de Aplicación (los <em>Services</em>) debería ser delgada. Debería coordinar la actividad de la
+        aplicación y delegar el trabajo a los objetos de la capa de Dominio, que deben ser ricos en comportamiento y
+        contener la lógica de negocio real." — <em>Regla general del diseño de software (parafraseando los principios de
+            Evans)</em>.</p>
+</blockquote>
+
+<h2>La Alternativa Procedural Real</h2>
+<p>Si vas a escribir código procedural encubierto en los servicios, usando los objetos de dominio solo como estructuras
+    de datos (como <em>records</em>), entonces estás usando el patrón <a
+            href="https://martinfowler.com/eaaCatalog/transactionScript.html" target="_blank">Transaction Script</a>. Y
+    si vas a usar un <em>Transaction Script</em>, es mejor hacerlo de frente y sin la sobrecarga de simular un modelo de
+    dominio complejo. Un <em>Domain Model</em> solo vale la pena si tienes lógica de negocio compleja que necesitas
+    organizar mediante la encapsulación y el polimorfismo.</p>
+
+</body>
+</html>
