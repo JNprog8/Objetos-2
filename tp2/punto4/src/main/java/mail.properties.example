@@ -1,0 +1,8 @@
+# Credenciales de Mailtrap
+# Configura aca las credenciales
+# luego renombra el archivo a mail.properties
+# termina moviendo el archivo a src/main/resources
+mail.host=sandbox.smtp.mailtrap.io
+mail.port=TU_PUERTO
+mail.username=CODIGO_DE_USUARIO
+mail.password=CODIGO_DE_CONTRASEÑA
