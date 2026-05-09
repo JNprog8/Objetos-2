@@ -1,0 +1,5 @@
+.idea/
+*.iml
+target/
+*.log
+REPO-GITHUB.txt
