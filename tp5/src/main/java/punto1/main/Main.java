@@ -1,6 +1,11 @@
 package punto1.main;
 
-import punto1.model.*;
+import punto1.model.Empresa;
+import punto1.model.composite.Director;
+import punto1.model.composite.Gerente;
+import punto1.model.composite.LiderDeProyecto;
+import punto1.model.composite.MandoMedio;
+import punto1.model.leaf.EmpleadoRegular;
 
 public class Main {
 
@@ -33,9 +38,9 @@ public class Main {
         director.asignarSubordinado(gerente);
 
         Empresa laserX = new Empresa("Laser X");
-        laserX.agregarEmpleadoPrincipal(director);
+        laserX.agregarEmpleado(director);
 
-        var total = laserX.montoTotalSalarial();
+        var total = laserX.calcularTotalSalarial();
 
         System.out.println("Total salarial de Laser X: " + total);
     }

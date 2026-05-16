@@ -1,6 +1,8 @@
-package punto1.model;
+package punto1.model.composite;
 
 public class Director extends EmpleadoJerarquico {
+
+    private static final String DIRECTOR = "Director";
 
     public Director(String nombre, double salario) {
         super(nombre, salario);
@@ -8,7 +10,7 @@ public class Director extends EmpleadoJerarquico {
 
     @Override
     public String obtenerRol() {
-        return "Director";
+        return DIRECTOR;
     }
 
     @Override

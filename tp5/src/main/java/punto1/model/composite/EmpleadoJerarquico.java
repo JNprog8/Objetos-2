@@ -1,9 +1,16 @@
-package punto1.model;
+package punto1.model.composite;
+
+import punto1.model.component.Empleado;
+import punto1.model.leaf.EmpleadoRegular;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class EmpleadoJerarquico implements Empleado {
+    private static final String APERTURA = "Un [";
+    private static final String CIERRE = "]";
+    private static final String INTERMEDIO = "] no puede reportar a un [";
+
     private double salario;
     private String nombre;
     private List<Empleado> subordinados;
@@ -21,6 +28,12 @@ public abstract class EmpleadoJerarquico implements Empleado {
     protected void confirmarSubordinado(Empleado subordinado) {
         this.subordinados.add(subordinado);
     }
+
+    @Override
+    public abstract String obtenerRol();
+
+    @Override
+    public abstract void respondeA(EmpleadoJerarquico empleadoJerarquico);
 
     @Override
     public double calcularSalarioTotal() {
@@ -48,6 +61,6 @@ public abstract class EmpleadoJerarquico implements Empleado {
     }
 
     private void rechazar(Empleado subordinado) {
-        throw new RuntimeException("Un [" + subordinado.obtenerRol() + "] no puede reportar a un [" + this.obtenerRol() + "]");
+        throw new RuntimeException(APERTURA + subordinado.obtenerRol() + INTERMEDIO + this.obtenerRol() + CIERRE);
     }
 }

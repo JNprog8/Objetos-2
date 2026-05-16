@@ -2,7 +2,12 @@ package punto1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import punto1.model.*;
+import punto1.model.Empresa;
+import punto1.model.composite.Director;
+import punto1.model.composite.Gerente;
+import punto1.model.composite.LiderDeProyecto;
+import punto1.model.composite.MandoMedio;
+import punto1.model.leaf.EmpleadoRegular;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -36,9 +41,9 @@ public class TestEmpresa {
         gerente.asignarSubordinado(mando);
         director.asignarSubordinado(gerente);
 
-        laserX.agregarEmpleadoPrincipal(director);
+        laserX.agregarEmpleado(director);
 
-        var total = laserX.montoTotalSalarial();
+        var total = laserX.calcularTotalSalarial();
         assertEquals(600.0, total);
     }
 
@@ -47,4 +52,5 @@ public class TestEmpresa {
         assertThrows(RuntimeException.class, () -> {
             lider.asignarSubordinado(gerente);
         });
-    }}
+    }
+}

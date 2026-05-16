@@ -1,6 +1,10 @@
-package punto1.model;
+package punto1.model.composite;
+
+import punto1.model.leaf.EmpleadoRegular;
 
 public class LiderDeProyecto extends EmpleadoJerarquico {
+
+    private static final String LIDER_DE_PROYECTO = "Líder de Proyecto";
 
     public LiderDeProyecto(String nombre, double salario) {
         super(nombre, salario);
@@ -8,7 +12,7 @@ public class LiderDeProyecto extends EmpleadoJerarquico {
 
     @Override
     public String obtenerRol() {
-        return "Líder de Proyecto";
+        return LIDER_DE_PROYECTO;
     }
 
     @Override

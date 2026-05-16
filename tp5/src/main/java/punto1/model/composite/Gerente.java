@@ -1,14 +1,16 @@
-package punto1.model;
+package punto1.model.composite;
 
-public class MandoMedio extends EmpleadoJerarquico {
+public class Gerente extends EmpleadoJerarquico {
 
-    public MandoMedio(String nombre, double salario) {
+    private static final String GERENTE = "Gerente";
+
+    public Gerente(String nombre, double salario) {
         super(nombre, salario);
     }
 
     @Override
     public String obtenerRol() {
-        return "Mando Medio";
+        return GERENTE;
     }
 
     @Override
@@ -17,7 +19,7 @@ public class MandoMedio extends EmpleadoJerarquico {
     }
 
     @Override
-    public void recibeA(LiderDeProyecto emp) {
+    public void recibeA(MandoMedio emp) {
         this.confirmarSubordinado(emp);
     }
 }

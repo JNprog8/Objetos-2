@@ -1,4 +1,6 @@
-package punto1.model;
+package punto1.model.component;
+
+import punto1.model.composite.EmpleadoJerarquico;
 
 public interface Empleado {
 
