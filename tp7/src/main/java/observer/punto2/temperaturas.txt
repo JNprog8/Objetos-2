@@ -1,0 +1,1 @@
+Temperatura: Error HTTP: 401 °C - Fecha: 31/05/2026

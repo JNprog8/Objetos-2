@@ -1,0 +1,4 @@
+Temperatura: 17.64 °C - Fecha: 30/05/2026
+Fecha: 30/05/2026 16:22:19 - Temperatura: 17.64 °C
+Fecha: 31/05/2026 01:15:29 - Temperatura: 9.84 °C
+Fecha: 05/06/2026 17:35:02 - Temperatura: Error HTTP: 401 °C
