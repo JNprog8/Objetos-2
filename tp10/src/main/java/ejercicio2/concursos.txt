@@ -1,0 +1,6 @@
+1, Maraton de Programacion Java, 2024/01/01, 2027/12/31
+2, Concurso de Fotografia Urbana, 2024/05/01, 2026/08/30
+3, Olimpíada de Matematicas, 2020/01/01, 2020/02/01
+4, Hackathon Smart Cities, 2025/10/01, 2027/01/01
+5, Torneo de Ajedrez Regional, 2025/12/01, 2026/12/31
+6, Concurso Gastronomico, 2026/05/01, 2026/05/10
